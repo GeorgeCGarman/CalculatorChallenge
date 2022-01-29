@@ -1,7 +1,67 @@
-body {
-  background-color: hsl(222, 26%, 31%);
-  box-sizing: border-box;
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Spartan", sans-serif;
+}
+
+:root {
+  /* ### Theme 1 */
+  /* #### Backgrounds */
+  --Verydarkdesaturatedblue1: hsl(222, 26%, 31%); /*(main background)*/
+  --Verydarkdesaturatedblue2: hsl(
+    223,
+    31%,
+    20%
+  ); /*(toggle background, keypad background)*/
+  --Verydarkdesaturatedblue3: hsl(224, 36%, 15%); /*(screen background)*/
+  /* #### Keys */
+  --Desaturateddarkblue1: hsl(225, 21%, 49%); /*(key background)*/
+  --Desaturateddarkblue2: hsl(224, 28%, 35%); /*(key shadow)*/
+  --Red: hsl(6, 63%, 50%); /*(key background, toggle)*/
+  --Darkred: hsl(6, 70%, 34%); /*(key shadow)*/
+  --Lightgrayishorange: hsl(30, 25%, 89%); /*(key background)*/
+  --Grayishorange: hsl(28, 16%, 65%); /*(key shadow)*/
+  /* #### Text */
+  --Verydarkgrayishblue: hsl(221, 14%, 31%);
+  /* ### Theme 2 */
+  /* #### Backgrounds */
+  --Lightgray: hsl(0, 0%, 90%); /*(main background)*/
+  --Grayishred: hsl(0, 5%, 81%); /*(toggle background, keypad background)*/
+  --Verylightgray: hsl(0, 0%, 93%); /*(screen background)*/
+  /* #### Keys */
+  --Darkmoderatecyan: hsl(185, 42%, 37%); /*(key background)*/
+  --Verydarkcyan: hsl(185, 58%, 25%); /*(key shadow)*/
+  --Orange: hsl(25, 98%, 40%); /*(key background, toggle)*/
+  --Darkorange: hsl(25, 99%, 27%); /*(key shadow)*/
+  --Lightgrayishyellow: hsl(45, 7%, 89%); /*(key background)*/
+  --Darkgrayishorange: hsl(35, 11%, 61%); /*(key shadow)*/
+  /* #### Text */
+  --Verydarkgrayishyellow: hsl(60, 10%, 19%);
+  /* ### Theme 3 */
+  /* #### Backgrounds */
+  --Verydarkviolet1: hsl(268, 75%, 9%); /*(main background)*/
+  --Verydarkviolet2: hsl(
+    268,
+    71%,
+    12%
+  ); /*(toggle background, keypad background, screen background)*/
+  /* #### Keys */
+  --Darkviolet: hsl(281, 89%, 26%); /*(key background)*/
+  --Vividmagenta: hsl(285, 91%, 52%); /*(key shadow)*/
+  --Purecyan: hsl(176, 100%, 44%); /*(key background, toggle)*/
+  --Softcyan: hsl(177, 92%, 70%); /*(key shadow)*/
+  --Verydarkviolet: hsl(268, 47%, 21%); /*(key background)*/
+  --Darkmagenta: hsl(290, 70%, 36%); /*(key shadow)*/
+  /* #### Text */
+  --Lightyellow: hsl(52, 100%, 62%);
+  --Verydarkblue: hsl(198, 20%, 13%);
+}
+
+body {
+  background-color: var(--Verydarkdesaturatedblue1);
 }
 
 .calculator {
@@ -25,23 +85,69 @@ body {
 .calculator > .keypad {
   padding: 15px;
   background-color: hsl(223, 31%, 20%);
-  width: 100%;
-  height: 20rem;
+  min-height: 20rem;
   border-radius: 10px;
-  margin: 1rem 0;
+  /* margin: 1rem 0; */
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(5, auto);
+  grid-template-columns: repeat(4, auto);
   grid-gap: 15px;
 }
 
 .key {
   text-align: center;
   background-color: white;
-  padding: .5em;
-  border-radius: 5px;
+  text-transform: uppercase;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  user-select: none;
+  color: var(--Verydarkgrayishblue);
+  position: relative;
 }
 
+/* .keypad > .key::before {
+  content: "";
+  background-color: white;
+  position: absolute;
+  bottom: 3px;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-radius: 10px;
+} */
+
 .key-reset, .key-equals {
-  grid-column: 1 / 3;
+  grid-column: span 2;
 }
+
+.key-reset {
+  background-color: var(--Desaturateddarkblue1);
+  color: white;
+}
+
+.key-equals {
+  background-color: var(--Red);
+}
+
+/* .keypad > .key-equals::before {
+  content: "";
+  background-color: var(--Red);
+  position: absolute;
+  bottom: 3px;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-radius: 10px;
+}
+
+.keypad > .key-reset::before {
+  content: "";
+  background-color: var(--Desaturateddarkblue1);
+  position: absolute;
+  bottom: 3px;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-radius: 10px;
+} */
